@@ -1,7 +1,8 @@
 #include <iostream>
 #include<stdio.h>
+#include <fstream>
 using namespace std;
-#define QUEUE_SIZE 5
+#define QUEUE_SIZE 1000
 struct LinearQueue
 {
     int front;
@@ -48,74 +49,48 @@ int remove(struct LinearQueue *l)
 }
 
 
-void printLinearQueue(struct LinearQueue *b)
+void printLinearQueue(struct LinearQueue *b,int count)
 {
-	int x,count;
+
+	int x,count1=0,sum=0,sum1=0;
 	struct LinearQueue temp;
 	initializeQueue(&temp);
 	while(!isQueueEmpty(b))
 	{
-
-      count++;
-
+	
 		x=remove(b);
-        cout <<x<<"\t";
-	//	insert(&temp,x);
-
-
+        sum=sum+x;
+        cout <<"P"<<count1+1<<"  :"<<sum<<"\n";
+	    count1++;      
 	}
-
-
-
-/*	initializeQueue(b);
-	while(!isQueueEmpty(&temp))
-	{
-		x=remove(&temp);
-		insert(b,x);
-	}*/
-
+	
+//	double avr=sum/count;
+	cout<<"Sum is:"<<sum<<"Avr is :"<<endl;
 }
 
 
 
 int main(){
- FILE *fptr;
-
-   int bt,at,p, wt=0,tat=0,ct=0,count=0,sum=0,aini;
-	  struct LinearQueue lq;
+ 
+    int bt,at,p;
+	char col;
+    int wt=0,tat=0,ct=0,count=0,sum=0;
+	struct LinearQueue lq;
+	
 	initializeQueue(&lq);
-   fptr = fopen("input.txt","r");
-   if(fptr == NULL){
+   ifstream fin("input.txt");
+	if(fin == NULL){
       cout<<"The File Not Exist !!";   
       exit(1);             
    }
-   while(fscanf(fptr,"%d:%d:%d",&bt ,&at ,&p ) == 3)
-       {
-
-    //cout<<"Barst Time"<<": "<<bt<<"  Arrival Time : "<<at<<endl;
-      	// count++;
-      	//tat=bt+wt;
-      //	wt=tat-bt;
-     //   cout<<"Waiting Time : "<<wt<<endl;
-      //	  tat=at-ct;
-      //	  tat=at-ct;
-      //	  tat=at-ct;
-
-      //	  tat=at-ct;
-
-		//cout<<"P"<<count<<":"<<a+aini<<" ms"<<endl;	
-
-
+   insert(&lq,0);
+    while(fin >> bt>> col >>at >> col>> p){
+	count++;	
 	insert(&lq,bt);
-
  }
+ printLinearQueue(&lq,count);
+ 	
 
- printLinearQueue(&lq);
-
-  //  double avr=a+aini/count; 
-//cout<<"Total is :"<<sum<<"\t"<<"Avrage is :"<<avr;	
-
-   fclose(fptr);
 
     return 0;
    }
