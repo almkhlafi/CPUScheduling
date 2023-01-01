@@ -18,7 +18,6 @@ int isQueueEmpty(struct LinearQueue *l)
     if (l->rear < l->front) return 1;
     else return 0;
 }
-
 int isQueuefull(struct LinearQueue *l)
 {
     if (l->rear == QUEUE_SIZE - 1) return 1;
@@ -47,39 +46,54 @@ int remove(struct LinearQueue *l)
         return x;
     }
 }
-
-
-void printLinearQueue(struct LinearQueue *b,int count)
+void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 {
-
-	int x,count1=0,sum=0,sum1=0;
-	struct LinearQueue temp;
+	int x,y,z,count1=0,sum=0,sum2=0,wt=0,count3=0;
+	struct LinearQueue temp,temp2;
 	initializeQueue(&temp);
-	while(!isQueueEmpty(b))
+	initializeQueue(&temp2);
+	count-1;
+	cout<<"Process Waiting Times:"<<endl;
+	while(!isQueueEmpty(a))
 	{
-	
-		x=remove(b);
+		if(count1==count)
+		break;
+		x=remove(a);
         sum=sum+x;
-        cout <<"P"<<count1+1<<"  :"<<sum<<"\n";
+        insert(&temp,sum);
 	    count1++;      
 	}
-	
-//	double avr=sum/count;
-	cout<<"Sum is:"<<sum<<"Avr is :"<<endl;
+		while(!isQueueEmpty(&temp)){
+			if(count1==count-1)
+			break;
+			x=remove(&temp);
+			insert(&temp2,x);		
+		}
+	while(!isQueueEmpty(b))
+	{
+		x=remove(b);
+		y=remove(&temp2);
+		wt=y-x;
+		z+=wt;
+        cout<<wt<<endl;
+	    count3++;
+	}
+		double avr;
+		avr=z/count3;
+	cout<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
 }
-
-
-
 int main(){
  
     int bt,at,p;
 	char col;
     int wt=0,tat=0,ct=0,count=0,sum=0;
-	struct LinearQueue lq;
+	struct LinearQueue lq,lq1;
 	
-	initializeQueue(&lq);
+   initializeQueue(&lq);
+   initializeQueue(&lq1);
    ifstream fin("input.txt");
-	if(fin == NULL){
+	if(fin == NULL)
+	 {
       cout<<"The File Not Exist !!";   
       exit(1);             
    }
@@ -87,10 +101,8 @@ int main(){
     while(fin >> bt>> col >>at >> col>> p){
 	count++;	
 	insert(&lq,bt);
+	insert(&lq1,at);
  }
- printLinearQueue(&lq,count);
- 	
-
-
+ fcfs(&lq,&lq1,count);
     return 0;
    }
