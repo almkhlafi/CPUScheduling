@@ -48,7 +48,10 @@ int remove(struct LinearQueue *l)
 }
 void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 {
-	int x,y,z,count1=0,sum=0,sum2=0,wt=0,count3=0;
+	
+	ofstream file; 
+    file.open("FCFS.txt");
+	int x,y,z,count1=0,sum=0,sum2=0,wt=0,count3=0,cntr=1;
 	struct LinearQueue temp,temp2;
 	initializeQueue(&temp);
 	initializeQueue(&temp2);
@@ -76,11 +79,16 @@ void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 		wt=y-x;
 		z+=wt;
         cout<<wt<<endl;
+        file<<"P"<<cntr++<<":"<<wt<<"\n";
 	    count3++;
 	}
 		double avr;
 		avr=z/count3;
 	cout<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
+	file<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
+    file.close(); 
+	
+	
 }
 int main(){
  
