@@ -109,39 +109,48 @@ int main(){
 
 
 	while(true){
-	cout<<"choose scheduling method "<<endl;
-	printf(" 1) Scheduling Method (None) \n2) Preemptive Mode (Off)\n3) Show Result\n4) End Program\nOption >");	
-	int choice=0;
+	cout<<"choose scheduling method\n"<<endl;
+	printf("1) Scheduling Method (None) \n2) Preemptive Mode (Off)\n3) Show Result\n4) End Program\nOption >");	
+	int choice;
 	cin>>choice;
 	switch (choice)
 	{
 	case 1:
 	cout<<"choose scheduling method "<<endl;
 	cin>>choice;
+	bool checked = true;
+	while(!checked){
 	switch (choice)
 	{
 	case 1:
-		cout<<"1) First Come, First Served Scheduling"<<endl;
+	cout<<"1) First Come, First Served Scheduling"<<endl;
 	insert(&lq,0);
-    while(fin >> bt>> col >>at >> col>> p){
+    while(fin >> bt>> col >>at >> col>> p)
+	{
 	count++;	
 	insert(&lq,bt);
 	insert(&lq1,at);
-	break;
+	 }break;
+
 	case 2:cout<<"Shortest Job First – Non-Preemptive"<<endl;
+	break;
 	case 3:cout<<"Priority Scheduling – Non-Preemptive"<<endl;
- }
-		break;
+	break;
 	
 	default:
-		break;
+	cout<<"Please Choose Correct Option From thr Menu"<<endl;
 	}
-		break;
+
+	cout<<" Do you want to check again onther non-preemptive mathod !! Y or N"<<endl;
+	char yn;
+	cin>>yn;
+	if(yn=='Y' || yn== 'y')checked=true;
+	else if(yn=='N' || yn=='n')checked=false;
+	}
 	
-	default:cout<<"Please Choose Correct Option From thr Menu";
-		break;
-	}
    
+ 
+ }
  }
  fcfs(&lq,&lq1,count);
     return 0;
