@@ -109,15 +109,39 @@ int main(){
 
 
 	while(true){
-
+	cout<<"choose scheduling method "<<endl;
 	printf(" 1) Scheduling Method (None) \n2) Preemptive Mode (Off)\n3) Show Result\n4) End Program\nOption >");	
-	break;
-   	insert(&lq,0);
+	int choice=0;
+	cin>>choice;
+	switch (choice)
+	{
+	case 1:
+	cout<<"choose scheduling method "<<endl;
+	cin>>choice;
+	switch (choice)
+	{
+	case 1:
+		cout<<"1) First Come, First Served Scheduling"<<endl;
+	insert(&lq,0);
     while(fin >> bt>> col >>at >> col>> p){
 	count++;	
 	insert(&lq,bt);
 	insert(&lq1,at);
+	break;
+	case 2:cout<<"Shortest Job First – Non-Preemptive"<<endl;
+	case 3:cout<<"Priority Scheduling – Non-Preemptive"<<endl;
  }
+		break;
+	
+	default:
+		break;
+	}
+		break;
+	
+	default:cout<<"Please Choose Correct Option From thr Menu";
+		break;
+	}
+   
  }
  fcfs(&lq,&lq1,count);
     return 0;
