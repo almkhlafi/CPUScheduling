@@ -1,6 +1,7 @@
 #include <iostream>
 #include<stdio.h>
 #include <fstream>
+#include <stdlib.h>
 using namespace std;
 #define QUEUE_SIZE 1000
 struct LinearQueue
@@ -51,7 +52,7 @@ void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 	
 	ofstream file; 
     file.open("FCFS.txt");
-	int x,y,z,count1=0,sum=0,sum2=0,wt=0,count3=0,cntr=1;
+	int x,y,z=0,count1=0,sum=0,sum2=0,wt=0,count3=0,cntr=1;
 	struct LinearQueue temp,temp2;
 	initializeQueue(&temp);
 	initializeQueue(&temp2);
@@ -84,7 +85,7 @@ void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 	}
 		double avr;
 		avr=z/count3;
-	cout<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
+	printf("Average Waiting Time: %0.1f   ms",avr,"\n");
 	file<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
     file.close(); 
 	
@@ -100,16 +101,23 @@ int main(){
    initializeQueue(&lq);
    initializeQueue(&lq1);
    ifstream fin("input.txt");
-	if(fin == NULL)
-	 {
-      cout<<"The File Not Exist !!";   
-      exit(1);             
-   }
-   insert(&lq,0);
+// 	if(fin == NULL)
+// 	 {
+//       cout<<"The File Not Exist !!";   
+//       exit(1);             
+//    }
+
+
+	while(true){
+
+	printf(" 1) Scheduling Method (None) \n2) Preemptive Mode (Off)\n3) Show Result\n4) End Program\nOption >");	
+	break;
+   	insert(&lq,0);
     while(fin >> bt>> col >>at >> col>> p){
 	count++;	
 	insert(&lq,bt);
 	insert(&lq1,at);
+ }
  }
  fcfs(&lq,&lq1,count);
     return 0;
