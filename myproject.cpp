@@ -10,6 +10,8 @@ struct LinearQueue
     int rear;
     int items[QUEUE_SIZE];
 };
+    void info(string on);
+
 void initializeQueue(struct LinearQueue *l)
 {
     l->front = 0; l->rear = -1;
@@ -246,95 +248,35 @@ struct Node *start = NULL;
 //    }
 
 
+
 	while(true){
-	cout<<"choose scheduling method\n"<<endl;
-	cout<<"1) Scheduling Method (None) \n2) Preemptive Mode (Off)\n3) Show Result\n4) End Program\nOption >";
-	int choice=0;
-    bool checked = false;
+    info("OFF");
+    int none;
+    string onof;
 
-	cin>>choice;
-	if(choice!=0 || choice>=1)
-	switch (choice)
-	{
-
-	case 1 :
-
-
-	while(!checked){
-      int NonPre=0;
-	cout<<"choose scheduling method\n1) First Come, First Served Scheduling\n2) Shortest Job First – Non-Preemptive\n3)Priority Scheduling – Non-Preemptive\n4) End Program\nOption >";
-	cin>>NonPre;
-	if(NonPre!=0 || NonPre>=1)
-	switch (NonPre)
-	{
-    case 1 :cout<<"Scheduling Method: First Come First Served"<<endl;
-
-
-	/*if(fin == NULL)
-	 {
-      cout<<"The File Not Exist !!";
-      exit(1);
-   }*/
-//push(&start, 0,0);
+    cin>>none;
+    if(none==1)
+    {
+    cout<<"choose scheduling method\n1) First Come, First Served Scheduling\n2) Shortest Job First – Non-Preemptive\n3)Priority Scheduling – Non-Preemptive\n4) End Program\nOption >";
+    insert(&lq,0);
     while(fin >> bt>> col >>at >> col>> p){
 	count++;
-	push(&start, bt,at,count);
- }
-//	btSort(start);
-	cout<<"\nShortest Job First (Non-preemptive) \n"<<endl;
-	btSort(start);
-	printListl(start,count);
-	printList(start,count);
-	break;
-    case 2 :cout<<"Scheduling Method: Shortest Job First – Non-Preemptive"<<endl;
-
-    break;
-	case 3 :cout<<"Scheduling Method: Priority Scheduling – Non-Preemptive"<<endl;break;
-	case 4 :exit(0);break;
-	default:
-	cout<<": None of scheduling method chosen \n Please Choose Correct Option From thr Menu"<<endl;
-	}else{cout<<"Invalude input";
-	 checked=false;
-	 break;
-	 }
-	cout<<"Done !! \n Do you want to check again onther non-preemptive mathod !! Y or N"<<endl;
-	char yn;
-	cin>>yn;
-	if(yn=='Y' || yn== 'y') checked=false;
-	else if(yn=='N' || yn=='n')checked=true;
+	insert(&lq,bt);
+	insert(&lq1,at);
 	}
-
-    case 2 :
-
-
-	while(!checked){
-    int Pre;
-	cout<<"choose scheduling method\n1) Shortest Job First –Preemptive\n2) Priority Scheduling –Preemptive\n3)Round Robin Scheduling – time_quantum=2\n4) End Program\nOption >";
-	cin>>Pre;
-	if(Pre!=0 || Pre>=1)
-	switch (Pre)
-	{
-    case 1 :cout<<"Scheduling Method: Shortest Job First –Preemptive"<<endl;break;
-    case 2 :cout<<"Scheduling Method: Priority Scheduling –Preemptive"<<endl;break;
-	case 3 :cout<<"Round Robin Scheduling – time_quantum=2"<<endl;break;
-	case 4 :exit(0);
-	default:
-	cout<<": None of scheduling method chosen \n Please Choose Correct Option From thr Menu"<<endl;
-	}else{cout<<"Invalude input"; checked=false; break;}
-	cout<<"Done !! \n Do you want to check again onther Preemptive mathod !! Y or N"<<endl;
-	char yn;
-	cin>>yn;
-	if(yn=='Y' || yn== 'y') checked=false;
-	else if(yn=='N' || yn=='n')checked=true;
+ fcfs(&lq,&lq1,count);}
+     else if(none=2){
+     cout<<"0 ) OFF\n1 ) ON\n";
+     cin>>none;
+     if(none=1)info("ON");
+     else info("OFF");
 	}
-
-	case 3 :cout<<"Show Result"<<endl;break;
-	case 4 :exit(0);
-	default: cout<<"Invalid Input Please Check the Menu";
-}else{cout<<"Invalude input";exit(0);}
-}
-
-
- fcfs(&lq,&lq1,count);
+	}
     return 0;
    }
+
+    void info(string n)
+    {
+    cout<<"choose scheduling method\n"<<endl;
+	cout<<"1) Scheduling Method (None)\n2) Preemptive Mode ("<<n<<")\n3) Show Result\n4) End Program\nOption >";
+    }
