@@ -1,1 +1,7 @@
-Average Waiting Time: 6  ms
+Process Waiting Times:
+P1:0
+P2:4
+P3:8
+P4:10
+P5:13
+Average Waiting Time: 7  ms
