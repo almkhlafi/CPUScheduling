@@ -59,7 +59,7 @@ void fcfs(struct LinearQueue *a,struct LinearQueue *b,int count )
 	initializeQueue(&temp);
 	initializeQueue(&temp2);
 	count-1;
-	//cout<<"Process Waiting Times:"<<endl;
+	cout<<"Process Waiting Times:"<<endl;
 	file<<"Process Waiting Times:"<<endl;
 	while(!isQueueEmpty(a))
 	{
@@ -143,6 +143,7 @@ void btSort(struct Node *start)
 			if (ptr1->bt > ptr1->next->bt)
 			{
 				btswap(ptr1, ptr1->next);
+			//	atswap(ptr1, ptr1->next);
 				swapped = 1;
 			}
 			ptr1 = ptr1->next;
@@ -166,15 +167,15 @@ int c=0;
 	(*start_ref) = new_node;
 }
 
-void watingTim(struct Node *node, int count)
+void printListl(struct Node *node, int count)
 {
-
-	ofstream file;
+    	ofstream file;
     file.open("output.txt");
 int count1=1,sum=0,sum2=0,wt=0;
-    file<<"Process Waiting Times:"<<endl;
 	while (node != NULL)
 	{
+		//cout<<"P"<<node->pid<<":  "<<node->bt<<":"<<node->at<<endl;
+		//if(count1==count)break;
 		sum =sum+node->bt;
 		sum2+=sum;
 		//wt=sum-node->bt;
@@ -182,28 +183,29 @@ int count1=1,sum=0,sum2=0,wt=0;
 		file<<"P"<<node->pid<<"  "<<sum<<":"<<node->at<<endl;
 		node = node->next;count1++;
 	}
-  file.close();
+	 file.close();
 }
 
-void avrWatingTim(struct Node *node, int count)
+void printList(struct Node *node, int count)
 {
-
 	ofstream file;
     file.open("output.txt");
 int count1=1,sum=0,sum2=0;
 	while (node != NULL)
 	{
+
+
 		//cout<<"P"<<node->pid<<":  "<<node->bt<<":"<<node->at<<endl;
 		if(count1==count)break;
 		sum =sum+node->bt;
 		sum2+=sum;
-		cout<<"P"<<node->pid<<"  "<<sum<<":"<<node->at<<endl;
+		//cout<<"P"<<node->pid<<"  "<<sum<<":"<<node->at<<endl;
 		node = node->next;count1++;
 	}
 double avr=sum2/count;
 printf("Average Waiting Time: %0.1f   ms",avr,"\n");
-file<<"Average Waiting Time:"<<avr<<endl;
-  file.close();
+	file<<"Average Waiting Time: "<<avr<<"  ms"<<endl;
+    file.close();
 }
 
 int main(){
@@ -248,8 +250,8 @@ int inc=0,input=0;
             push(&start, bt,at,count);
             }
             btSort(start);
-            avrWatingTim(start,count);
-            watingTim(start,count);
+            printListl(start,count);
+            printList(start,count);
         }else if(choice==3){
             cout<<"3)Priority Scheduling – Non-Preemptive"<<endl;
         }else if(choice==4){exit(1);}
@@ -275,10 +277,9 @@ int inc=0,input=0;
     }
     myfile.close();
 }
-
 else
 {
-    std::cout << "Unable to open file";
+    cout << "Unable to open file";
 }
 	}
 	else if(input==4)exit(1);

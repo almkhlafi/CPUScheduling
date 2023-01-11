@@ -1,1 +1,1 @@
-Process Waiting Times:
+Average Waiting Time: 6  ms
