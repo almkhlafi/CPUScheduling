@@ -1,7 +1,7 @@
 # CPU Scheduling
 
 ## Overview
-This project is c/C++ designed to simulate various CPU scheduling algorithms. It includes features such as process management, scheduling visualization, and performance metrics.
+This project is C/C++ designed to simulate various CPU scheduling algorithms. It includes features such as process management, scheduling visualization, and performance metrics.
 
 ## Features
 - **Process Management**: Add, edit, and delete processes with specific attributes.
